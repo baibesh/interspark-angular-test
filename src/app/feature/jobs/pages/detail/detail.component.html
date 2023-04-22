@@ -1,1 +1,41 @@
-<p>detail works!</p>
+<div class="row" *ngIf="job; else loading">
+  <nav aria-label="breadcrumb" class="my-2">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/jobs">Jobs</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ job.job_title }}
+      </li>
+    </ol>
+  </nav>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      Number: <span class="fw-bold">{{ job.job_number }}</span>
+    </li>
+    <li class="list-group-item">
+      Title: <span class="fw-bold">{{ job.job_title }}</span>
+    </li>
+    <li class="list-group-item">
+      Notes: <span class="fw-bold">{{ job.job_notes }}</span>
+    </li>
+    <li class="list-group-item">
+      Start date: <span class="fw-bold">{{ job.job_start_date }}</span>
+    </li>
+    <li class="list-group-item">
+      Close date: <span class="fw-bold">{{ job.job_close_date }}</span>
+    </li>
+    <li class="list-group-item">
+      Experience required:
+      <span class="fw-bold">{{ job.experience_required | boolToStr }}</span>
+    </li>
+    <li class="list-group-item">
+      Number of opening: {{ job.number_of_opening }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <div class="d-flex justify-content-center align-items-center">
+    <span>Loading ...</span>
+  </div>
+</ng-template>

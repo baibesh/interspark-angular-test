@@ -6,6 +6,9 @@ import { NewComponent } from './pages/new/new.component';
 import { RouterModule, Routes } from '@angular/router';
 import { JobCardComponent } from './components/job-card/job-card.component';
 import { JobUpdateComponent } from './components/job-update/job-update.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { BoolToStrPipe } from '../../core/pipes/bool-to-str.pipe';
 
 const routes: Routes = [
   {
@@ -26,7 +29,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ListComponent, DetailComponent, NewComponent, JobCardComponent, JobUpdateComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [
+    ListComponent,
+    DetailComponent,
+    NewComponent,
+    JobCardComponent,
+    JobUpdateComponent,
+    BoolToStrPipe,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    NgbInputDatepicker,
+  ],
 })
 export class JobsModule {}

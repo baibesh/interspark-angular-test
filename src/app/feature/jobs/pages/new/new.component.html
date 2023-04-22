@@ -1,1 +1,120 @@
-<p>new works!</p>
+<div class="row mt-4">
+  <h2>Create a new job</h2>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/jobs">Jobs</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Create a new job
+      </li>
+    </ol>
+  </nav>
+
+  <form [formGroup]="form">
+    <div class="mb-3">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        formControlName="job_title"
+        placeholder="Example: Software Developer"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="notes">Job notes</label>
+      <textarea
+        formControlName="job_notes"
+        class="form-control"
+        id="notes"
+        rows="3"
+        placeholder="Something notes ..."
+      ></textarea>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value="false"
+        formControlName="experience_required"
+        id="experience"
+      />
+      <label class="form-check-label" for="experience"> Experience </label>
+    </div>
+    <div class="mt-3">
+      <label for="start_date">Start date</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          formControlName="job_start_date"
+          ngbDatepicker
+          id="start_date"
+          #startDate="ngbDatepicker"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          (click)="startDate.toggle()"
+          type="button"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-calendar-week"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
+            />
+            <path
+              d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="mt-3">
+      <label for="start_date">End date</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          formControlName="job_close_date"
+          ngbDatepicker
+          id="end_date"
+          #d="ngbDatepicker"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          (click)="d.toggle()"
+          type="button"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-calendar-week"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
+            />
+            <path
+              d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="mt-3">
+      <button type="submit" (click)="save()" class="btn btn-primary">
+        Save
+      </button>
+      <button class="mx-2 btn btn-danger" routerLink="/jobs">Cancel</button>
+    </div>
+  </form>
+</div>
