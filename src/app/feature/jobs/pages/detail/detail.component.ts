@@ -23,34 +23,46 @@ export class DetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.id) {
-      this.jobService
-        .getJob(this.id)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe({
-          next: (value) => {
-            console.log(value);
-            this.job = value;
-
-            this.jobService
-              .openJob(value)
-              .pipe(takeUntil(this.destroy$))
-              .subscribe({
-                next: (res) => {
-                  console.log(res);
-                },
-                error: (err) => {
-                  console.log(err);
-                },
-              });
-          },
-          error: (err) => {
-            console.log(err);
-            this.router.navigate(['/jobs']).then();
-          },
-        });
+      this.loadJob(this.id);
     } else {
       this.router.navigate(['/jobs']).then();
     }
+
+    this.jobService.loadJob$.pipe(takeUntil(this.destroy$)).subscribe({
+      next: (v) => {
+        if (v && this.id) {
+          this.loadJob(this.id);
+        }
+      },
+    });
+  }
+
+  loadJob(id: string): void {
+    this.jobService
+      .getJob(id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (value) => {
+          console.log(value);
+          this.job = value;
+
+          this.jobService
+            .openJob(value)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe({
+              next: (res) => {
+                this.job.number_of_opening = res.number_of_opening;
+              },
+              error: (err) => {
+                console.log(err);
+              },
+            });
+        },
+        error: (err) => {
+          console.log(err);
+          this.router.navigate(['/jobs']).then();
+        },
+      });
   }
 
   ngOnInit(): void {}

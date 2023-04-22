@@ -8,7 +8,7 @@
     </ol>
   </nav>
 
-  <ul class="list-group">
+  <ul class="list-group mb-2">
     <li class="list-group-item">
       Number: <span class="fw-bold">{{ job.job_number }}</span>
     </li>
@@ -19,10 +19,16 @@
       Notes: <span class="fw-bold">{{ job.job_notes }}</span>
     </li>
     <li class="list-group-item">
-      Start date: <span class="fw-bold">{{ job.job_start_date }}</span>
+      Start date:
+      <span class="fw-bold">{{
+        job.job_start_date | date : "dd-MM-yyyy"
+      }}</span>
     </li>
     <li class="list-group-item">
-      Close date: <span class="fw-bold">{{ job.job_close_date }}</span>
+      Close date:
+      <span class="fw-bold">{{
+        job.job_close_date | date : "dd-MM-yyyy"
+      }}</span>
     </li>
     <li class="list-group-item">
       Experience required:
@@ -32,6 +38,7 @@
       Number of opening: {{ job.number_of_opening }}
     </li>
   </ul>
+  <app-btn-actions [job]="job"></app-btn-actions>
 </div>
 
 <ng-template #loading>

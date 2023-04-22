@@ -1,13 +1,10 @@
 <div class="row" *ngIf="!loading; else load">
   <div class="col-12 my-2">
     <h1>Jobs list</h1>
+    <app-search></app-search>
   </div>
-  <div class="col-12 d-flex">
-    <app-job-card
-      *ngFor="let job of jobs"
-      [job]="job"
-      (loadJob)="loadJobs()"
-    ></app-job-card>
+  <div class="col-12 d-flex flex-wrap">
+    <app-job-card *ngFor="let job of jobs" [job]="job"></app-job-card>
     <div class="card d-flex align-items-center justify-content-center">
       <button class="btn" [routerLink]="['new']">
         <svg
