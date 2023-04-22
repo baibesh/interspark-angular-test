@@ -1,1 +1,10 @@
-<p>list works!</p>
+<div class="row">
+  <div class="col-12 my-2">
+    <h1>Jobs list</h1>
+  </div>
+  <div class="col-12" *ngIf="jobs$ | async as jobs">
+    <div *ngFor="let job of jobs">
+      <app-job-card [job]="job"></app-job-card>
+    </div>
+  </div>
+</div>

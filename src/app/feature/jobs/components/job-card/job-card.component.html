@@ -1,0 +1,15 @@
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">{{ job.job_title }}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">
+      {{ job.job_start_date | date }} - {{ job.job_close_date | date }}
+    </h6>
+    <p class="card-text">{{ job.job_notes }}</p>
+  </div>
+
+  <div class="card-footer">
+    <i class="bi bi-0-circle"></i>
+    <a [routerLink]="[job.id]" class="card-link">Detail</a>
+    <a (click)="update(job)" class="card-link">Update</a>
+  </div>
+</div>

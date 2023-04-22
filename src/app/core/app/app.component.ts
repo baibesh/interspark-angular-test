@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <app-navigation></app-navigation>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  `,
 })
-export class AppComponent {
-  title = 'interspark-angular-test';
-}
+export class AppComponent {}
